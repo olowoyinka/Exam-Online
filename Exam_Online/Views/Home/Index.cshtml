@@ -1,0 +1,55 @@
+﻿@model Exam_Online.Models.IndexModel.SessionModel
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2><span style="color:#ff0000;"><i>Online</i></span> Exam Online</h2>
+</div>
+
+<br />
+
+@if(TempData["message"] != null)
+{
+    <div class="row">
+        <div class="col-md-10" style="color:red">
+            <p>
+                @Html.Raw(TempData["message"])
+            </p>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Instruction", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <div class="col-md-3">@Html.Label("Select Test")</div>
+                <div class="col-md-5">
+                    @Html.DropDownListFor(x => Model.TestID, new SelectList(ViewBag.Tests, "TestID", "Name", Model.TestID), "..Select Test..", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">@Html.Label("Enter Name")</div>
+                <div class="col-md-5">@Html.TextBoxFor(x => Model.UserName, Model.UserName, new { @class = "form-control" })</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">@Html.Label("Enter Email")</div>
+                <div class="col-md-5">@Html.TextBoxFor(x => Model.Email, Model.Email, new { @class = "form-control" })</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">@Html.Label("Enter Phone Number")</div>
+                <div class="col-md-5">@Html.TextBoxFor(x => Model.Phone, Model.Phone, new { @class = "form-control" })</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-primary" >Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

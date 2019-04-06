@@ -1,0 +1,64 @@
+﻿@model Exam_Online.Models.IndexModel.SessionModel
+
+
+@{
+    ViewData["Title"] = "Instruction";
+}
+
+<div class="container">
+    <br/>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>@ViewBag.TestName</h2>
+            <p>@ViewBag.TestDescription</p>
+        </div>
+        <div class="col-md-6">
+            Test Duration: @(ViewBag.TestDuration) Minutes
+            <br/> Total Question : @ViewBag.QuestionCount
+            @ViewData["Titles"]
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            Before You Begin, Please read the following Instruction Carefully.
+        </div>
+    </div>
+
+    <h3>How to Score More?</h3>
+    <ul>
+        <li>The test is used to evaluate your expertise, creativity, productivity, knowledge and decision makin technique</li>
+        <li>You may use resource available( like visual studio etc)</li>
+        <li>Do not use internet or external resources outside of dis machine</li>
+    </ul>
+
+    <h3>How to use d Application?</h3>
+    <ul>
+        <li>The test is used to evaluate your expertise, creativity, productivity, knowledge and decision makin technique</li>
+        <li>You may use resource available( like visual studio etc)</li>
+        <li>Do not use internet or external resources outside of dis machine</li>
+    </ul>
+
+    <h3>Tip?</h3>
+    <ul>
+        <li>The test is used to evaluate your expertise, creativity, productivity, knowledge and decision makin technique</li>
+        <li>You may use resource available( like visual studio etc)</li>
+        <li>Do not use internet or external resources outside of dis machine</li>
+    </ul>
+
+    @if(Model != null)
+    {
+        using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @id = "formRegister" }))
+        {
+            @Html.HiddenFor(x=> Model.TestID)
+            @Html.HiddenFor(x=> Model.UserName)
+            @Html.HiddenFor(x=> Model.Email)
+            @Html.HiddenFor(x=> Model.Phone)
+
+            <a href="javascript:void(0)" onclick="getElementById('formRegister').submit();" class="btn btn-primary">Register and Start</a>
+        }
+    }
+
+</div>
+
